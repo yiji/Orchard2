@@ -1,0 +1,22 @@
+﻿{
+  "version": "2.0.0-*",
+  "dependencies": {
+    "Microsoft.AspNetCore.Mvc.Modules.Abstractions": "1.0.0-*",
+    "Microsoft.AspNetCore.SignalR.Server": "0.2.0-*",
+    "Microsoft.AspNetCore.StaticFiles": "1.1.0-*",
+    "Microsoft.AspNetCore.WebSockets": "0.2.0-*"
+  },
+  "buildOptions": {
+    "define": [ "TRACE" ],
+    "debugType": "portable",
+    "warningsAsErrors": true
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  }
+}

@@ -7,3 +7,4 @@ OrchardVersion: 2.0.x
 Description: Test
 FeatureDescription: Test
 Category: Samples
+Dependencies: Orchard.SignalR

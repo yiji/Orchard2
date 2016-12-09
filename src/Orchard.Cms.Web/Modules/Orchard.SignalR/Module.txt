@@ -1,0 +1,8 @@
+﻿Name: SignalR
+Author: The Orchard Team
+Website: http://orchardproject.net
+Version: 2.0.x
+OrchardVersion: 2.0.x
+Description: The setup module is for bootstrapping SignalR.
+FeatureDescription: Bootstraps SignalR.
+Category: Infrastructure
