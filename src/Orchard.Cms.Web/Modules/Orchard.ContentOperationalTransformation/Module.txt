@@ -1,0 +1,8 @@
+﻿Name: Content Operational Transformation
+Author: The Orchard Team
+Website: http://orchardproject.net
+Version: 2.0.x
+OrchardVersion: 2.0.x
+Description: Enabled Content OT.
+Dependencies: Orchard.SignalR
+Category: Infrastructure
