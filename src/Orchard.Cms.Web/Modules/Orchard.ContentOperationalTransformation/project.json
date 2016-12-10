@@ -1,9 +1,10 @@
 ﻿{
   "version": "2.0.0-*",
   "dependencies": {
-    "Microsoft.AspNetCore.SignalR.Server": "0.2.0-*",
+    "Orchard.SignalR": "2.0.0-*",
     "Orchard.ContentDifferential": "2.0.0-*",
     "Orchard.ContentManagement.Abstractions": "2.0.0-*",
+    "Orchard.ContentManagement.Display": "2.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
   "buildOptions": {

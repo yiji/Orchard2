@@ -1,0 +1,25 @@
+﻿
+<script 
+        name="signalr" 
+        depends-on="admin" 
+        at="Foot" 
+        src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
+
+<script 
+        name="signalrhubs" 
+        depends-on="signalr" 
+        at="Foot"
+        src="/signalr/hubs"></script>
+
+<script depends-on="signalr" at="Foot">
+
+    $(function () {
+        var broadcaster = $.connection.contentHub;
+
+        $.connection.hub.start().done(function () {
+            broadcaster.server.broadcast('hello from client');
+        });
+    });
+
+</script>
+<p>dasdasdasd</p>

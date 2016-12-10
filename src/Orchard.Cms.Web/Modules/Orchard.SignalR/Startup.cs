@@ -10,16 +10,12 @@ namespace Orchard.SignalR
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR(options =>
-            {
-                options.Hubs.EnableDetailedErrors = true;
-            });
+            services.AddSignalR();
         }
 
         public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            app.UseWebSockets();
-            app.UseSignalR();
+
         }
     }
 }
