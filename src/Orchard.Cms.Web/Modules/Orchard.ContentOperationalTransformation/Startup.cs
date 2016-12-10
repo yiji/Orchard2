@@ -11,6 +11,7 @@ using Orchard.ContentOperationalTransformation.Handlers;
 using Orchard.ContentOperationalTransformation.Hubs;
 using Orchard.ContentOperationalTransformation.Model;
 using Orchard.Data.Migration;
+using Microsoft.AspNetCore.SignalR.Hubs;
 
 namespace Orchard.ContentOperationalTransformation
 {
@@ -23,13 +24,16 @@ namespace Orchard.ContentOperationalTransformation
             services.AddSingleton<ContentPart, ContentOTPart>();
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IContentPartHandler, ContentOTPartHandler>();
+
+            services.AddScoped<IHub, ContentHub>();
         }
 
         public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            app.UseSignalR(hrb => {
-                hrb.MapHub<ContentHub>("/contenthub");
-            });
+            //app.UseSignalR(hrb => {
+            //    hrb.MapHub<ContentHub>("/contenthub");
+            //});
+
         }
     }
 }

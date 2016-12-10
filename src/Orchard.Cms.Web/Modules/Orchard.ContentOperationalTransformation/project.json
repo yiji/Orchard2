@@ -4,8 +4,7 @@
     "Orchard.SignalR": "2.0.0-*",
     "Orchard.ContentDifferential": "2.0.0-*",
     "Orchard.ContentManagement.Abstractions": "2.0.0-*",
-    "Orchard.ContentManagement.Display": "2.0.0-*",
-    "NETStandard.Library": "1.6.1"
+    "Orchard.ContentManagement.Display": "2.0.0-*"
   },
   "buildOptions": {
     "define": [ "TRACE" ],
