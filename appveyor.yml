@@ -1,19 +1,17 @@
-image: Visual Studio 2017 RC
+init:
+  - git config --global core.autocrlf true
 environment:
-  nodejs_version: "6.9.1"
-
+  global:
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    nodejs_version: "6.9.1"
 # Install scripts. (runs after repo cloning)
 install:
   # Get the latest stable version of Node.js or io.js
-  - ps: Install-Product node $env:nodejs_version
-
-init:
-  - git config --global core.autocrlf true
+  - ps: Install-Product node $env:nodejs_version  
 build_script:
-  - dotnet restore
-  - dotnet build
-test_script:
-  - ps: .\scripts\run-tests.ps1
+  - ps: .\build.ps1
 clone_depth: 1
 test: on
 deploy: off
+os: Visual Studio 2017
