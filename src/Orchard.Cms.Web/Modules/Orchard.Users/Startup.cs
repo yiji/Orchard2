@@ -17,6 +17,7 @@ using Orchard.Users.Commands;
 using Orchard.Users.Indexes;
 using Orchard.Users.Models;
 using Orchard.Users.Services;
+using Microsoft.AspNetCore.DataProtection;
 using YesSql.Core.Indexes;
 
 namespace Orchard.Users
@@ -28,12 +29,14 @@ namespace Orchard.Users
         private readonly string _tenantName;
         private readonly string _tenantPrefix;
         private readonly IdentityOptions _options;
+        private readonly IDataProtectionProvider _dataProtectionProvider;
 
-        public Startup(ShellSettings shellSettings, IOptions<IdentityOptions> options)
+        public Startup(ShellSettings shellSettings, IOptions<IdentityOptions> options, IDataProtectionProvider dataProtectionProvider)
         {
             _options = options.Value;
             _tenantName = shellSettings.Name;
             _tenantPrefix = "/" + shellSettings.RequestUrlPrefix;
+            _dataProtectionProvider = dataProtectionProvider.CreateProtector(_tenantName);
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
@@ -85,7 +88,13 @@ namespace Orchard.Users
                 options.Cookies.ApplicationCookie.CookiePath = _tenantPrefix;
                 options.Cookies.ApplicationCookie.LoginPath = "/" + LoginPath;
                 options.Cookies.ApplicationCookie.AccessDeniedPath = "/" + LoginPath;
+                // Using a different DataProtectionProvider per tenant ensures cookie isolation between tenants
+                options.Cookies.ApplicationCookie.DataProtectionProvider = _dataProtectionProvider;
+                options.Cookies.ExternalCookie.DataProtectionProvider = _dataProtectionProvider;
+                options.Cookies.TwoFactorRememberMeCookie.DataProtectionProvider = _dataProtectionProvider;
+                options.Cookies.TwoFactorUserIdCookie.DataProtectionProvider = _dataProtectionProvider;                
             });
+            
 
             services.AddScoped<IIndexProvider, UserIndexProvider>();
             services.AddScoped<IDataMigration, Migrations>();
