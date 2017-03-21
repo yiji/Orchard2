@@ -2,7 +2,7 @@
   <Import Project="dependencies.props" />
   <Import Project="..\version.props" />
   <PropertyGroup>
-    <Product>Orchard 2</Product>
+    <Product>Orchard Core CMS</Product>
     <RepositoryUrl>https://github.com/OrchardCMS/Orchard2</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <VersionSuffix Condition="'$(VersionSuffix)'!='' AND '$(BuildNumber)' != ''">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
