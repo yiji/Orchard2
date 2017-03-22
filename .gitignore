@@ -173,6 +173,7 @@ profiling/
 #.vscode/
 .build/
 .testPublish/
+global.json
 
 nuget.exe
 .nuget/
