@@ -2,5 +2,6 @@
   <ItemGroup>
     <ProjectsToPack Include="$(RepositoryRoot)src\OrchardCore\*\*.csproj" />
     <ProjectsToPack Include="$(RepositoryRoot)src\Orchard.Cms.Web\Modules\*\*.csproj" />
+    <ProjectsToPack Include="$(RepositoryRoot)src\Orchard.Cms.Web\Themes\*\*.csproj" />
   </ItemGroup>
 </Project>
