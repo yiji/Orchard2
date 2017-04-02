@@ -29,7 +29,7 @@ namespace Microsoft.AspNetCore.Nancy.Modules
 
         public INancyEnvironment GetEnvironment()
         {
-            return new DefaultNancyEnvironment();
+            return _httpContextAccessor.HttpContext.RequestServices.GetService<INancyEnvironment>();
         }
 
         public INancyModule GetModule(Type moduleType, NancyContext context)
