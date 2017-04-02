@@ -17,7 +17,7 @@ namespace Microsoft.AspNetCore.Nancy.Modules
                 
                 app.UseOwin(x => x.UseNancy(no =>
                 {
-                    no.Bootstrapper = new ModularNancyBootsrapper(contextAccessor);
+                    no.Bootstrapper = new ModularNancyBootstrapper(contextAccessor);
                 }));
             });
 

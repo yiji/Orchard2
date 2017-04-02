@@ -9,9 +9,16 @@ namespace Orchard.Nancy
 {
     public class Startup : StartupBase
     {
+        private readonly IServiceProvider _applicationServices;
+
+        public Startup(IServiceProvider applicationServices)
+        {
+            _applicationServices = applicationServices;
+        }
+
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddRouting();
+            services.AddNancyModules(_applicationServices);
         }
 
         public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider)

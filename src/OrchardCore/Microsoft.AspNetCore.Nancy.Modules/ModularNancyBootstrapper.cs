@@ -8,18 +8,13 @@ using Nancy.Configuration;
 
 namespace Microsoft.AspNetCore.Nancy.Modules
 {
-    public class ModularNancyBootsrapper : INancyBootstrapper, INancyModuleCatalog
+    public class ModularNancyBootstrapper : INancyBootstrapper, INancyModuleCatalog
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ModularNancyBootsrapper(IHttpContextAccessor httpContextAccessor)
+        public ModularNancyBootstrapper(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-        }
-
-        public void Dispose()
-        {
-            
         }
 
         public IEnumerable<INancyModule> GetAllModules(NancyContext context)
@@ -45,6 +40,11 @@ namespace Microsoft.AspNetCore.Nancy.Modules
         public void Initialise()
         {
             
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }
