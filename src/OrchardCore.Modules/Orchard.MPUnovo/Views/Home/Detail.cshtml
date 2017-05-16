@@ -1,0 +1,42 @@
+﻿@using Orchard.MPUnovo.Models;
+@model QuoteInfo
+@{
+    Layout = "AdminLTE";
+}
+@section Scripts{
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/localization/messages_zh.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}
+@*@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+
+@Html.HiddenFor(model => model.inquiry_id)
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <label>物料编码</label>
+        @Html.TextBoxFor(model => model.MaterialCoding, new { @class = "form-control", @readonly = "true" })
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <label>物料名称</label>
+        @*<input class="form-control" placeholder="" type="text" value="@Model.MaterialName" readonly="true">*@
+        @Html.TextBoxFor(model => model.MaterialName, new { @class = "form-control", @readonly = "true" })
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <label>价格</label>
+        @Html.TextBoxFor(model => model.price, new { @class = "form-control", @readonly = "true", data_val_number = "价格请填写数字.", data_val_required = "价格必填." })
+        @Html.ValidationMessageFor(model => model.price, null, new { @class = "text-danger" })
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <label>起订量</label>
+        @Html.TextBoxFor(model => model.spq, new { @class = "form-control", @readonly = "true", data_val_number = "起订量请填写数字.", data_val_required = "起订量必填." })
+        @Html.ValidationMessageFor(model => model.spq, null, new { @class = "text-danger" })
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <label>交货周数</label>
+        @Html.TextBoxFor(model => model.l_t, new { @class = "form-control", @readonly = "true", data_val_number = "交货周数请填写整数.", data_val_digits = "交货周数请填写整数.", data_val_required = "交货周数必填." })
+        @Html.ValidationMessageFor(model => model.l_t, null, new { @class = "text-danger" })
+    </div>
+</div>
+
+
+

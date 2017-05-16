@@ -13,7 +13,9 @@
   <ItemGroup>
     <PackageAssetFiles Include="**\*" Exclude="$(ExcludedFiles)" />
   </ItemGroup>
-
+  <Target Name="TestTarget2" AfterTargets="Build">
+    <Message Text="测试 Directory.Build.props 层次2" Importance="high" />
+  </Target>
   <Target Name="CheckManifestFile" AfterTargets="Build" Condition="!Exists('Module.txt')">
     <Message Text="Generating manifest file: $(MSBuildProjectName)" Importance="high" />
     <WriteLinesToFile
@@ -35,7 +37,8 @@
     <Message Text="Packaging asset files: $(MSBuildProjectName)" Importance="high" />
     <Copy
       SourceFiles="@(PackageAssetFiles)"
-      DestinationFolder="$(ApplicationDirectory)\Packages\$(MSBuildProjectName)\%(RecursiveDir)" />
+      DestinationFolder="$(ApplicationDirectory)\Packages\$(MSBuildProjectName)\%(RecursiveDir)"
+      SkipUnchangedFiles="true" />
   </Target>
 
   <!-- Adds a custom .props file to the generated module package -->

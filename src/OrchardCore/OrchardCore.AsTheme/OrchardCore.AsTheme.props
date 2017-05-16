@@ -35,7 +35,8 @@
     <Message Text="Packaging asset files: $(MSBuildProjectName)" Importance="high" />
     <Copy
       SourceFiles="@(PackageAssetFiles)"
-      DestinationFolder="$(ApplicationDirectory)\Packages\$(MSBuildProjectName)\%(RecursiveDir)" />
+      DestinationFolder="$(ApplicationDirectory)\Packages\$(MSBuildProjectName)\%(RecursiveDir)"
+      SkipUnchangedFiles="true" />
   </Target>
 
   <!-- Adds a custom .props file to the generated theme package -->

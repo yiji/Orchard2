@@ -1,0 +1,83 @@
+﻿@using Orchard.MPUnovo.Models;
+@model ChangeInfoViewModel
+@{
+    Layout = "AdminLTE";
+}
+@section Header{
+    <link rel="stylesheet" href="/styles/style.css">
+}
+@section Scripts{
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/localization/messages_zh.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}
+@*@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.NewQuote.inquiry_id)
+    @Html.HiddenFor(model => model.NewQuote.product_id)
+
+    <div class="row old">
+        <h2>原物料</h2>
+        <div class="col-xs-12 col-md-4">
+            <label>物料编码</label>
+            @Html.TextBoxFor(model => model.OldQuote.MaterialCoding, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <label>物料名称</label>
+            @*<input class="form-control" placeholder="" type="text" value="@Model.MaterialName" readonly="true">*@
+            @Html.TextBoxFor(model => model.OldQuote.MaterialName, new { @class = "form-control", @readonly = "true" })
+        </div>
+    </div>
+    <div class="row new">
+        <h2>新物料</h2>
+        <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12">
+                <label>物料名称</label>
+                @Html.TextBoxFor(model => model.NewQuote.name, new { @class = "form-control", data_val_required = "物料名称必填." })
+                @Html.ValidationMessageFor(model => model.NewQuote.name, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-xs-12">
+                <label>品牌型号</label>
+                @Html.TextBoxFor(model => model.NewQuote.product_mfg_pn, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-12">
+                <label>品牌</label>
+                @Html.TextBoxFor(model => model.NewQuote.product_mfg_name, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-12">
+                <label>规格描述</label>
+                @Html.TextAreaFor(model => model.NewQuote.product_descript, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-12">
+                <label>更改原因</label>
+                @Html.DropDownListFor(model => model.NewQuote.Reason, Model.NewQuote.AvailableReasons, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12">
+                <label>价格</label>
+                @Html.TextBoxFor(model => model.NewQuote.price, new { @class = "form-control", data_val_number = "价格请填写数字.", data_val_required = "价格必填." })
+                @Html.ValidationMessageFor(model => model.NewQuote.price, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-xs-12">
+                <label>起订量</label>
+                @Html.TextBoxFor(model => model.NewQuote.spq, new { @class = "form-control", data_val_number = "起订量请填写数字.", data_val_required = "起订量必填." })
+                @Html.ValidationMessageFor(model => model.NewQuote.spq, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-xs-12">
+                <label>交货周数</label>
+                @Html.TextBoxFor(model => model.NewQuote.l_t, new { @class = "form-control", data_val_number = "交货周数请填写整数.", data_val_digits = "交货周数请填写整数.", data_val_required = "交货周数必填." })
+                @Html.ValidationMessageFor(model => model.NewQuote.l_t, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="text-align:center;margin-top:20px;">
+            <input type="submit" value="保存" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+

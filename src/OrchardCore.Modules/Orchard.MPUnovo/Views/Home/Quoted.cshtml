@@ -1,0 +1,50 @@
+﻿@using Orchard.MPUnovo.Models;
+@model QuoteInfoViewModel
+@{
+    Layout = "AdminLTE";
+    ViewBag.Title = "已报价列表";
+}
+
+
+@section Header{
+    <link rel="stylesheet" href="/styles/style.css">
+}
+<table class="table table-bordered">
+    <tr>
+        <th>物料名称</th>
+        <th>物料编码</th>
+        <th>编辑</th>
+    </tr>
+    @foreach (var entry in Model.Quotes)
+    {
+        <tr>
+            <td>
+                @entry.MaterialName
+                @if (entry.Reason.Trim() != "")
+                {
+                    <div class="tooltip right replaceTag" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            此物料已申请替换料
+                        </div>
+                    </div>
+                    @*<span class="label label-info">此物料已申请替换料</span>*@
+                }
+            </td>
+            <td>@entry.MaterialCoding</td>
+            <td>
+                @if (entry.Reason.Trim() == "")
+                {
+                    <a asp-action="Detail" asp-route-inquiryid="@entry.inquiry_id" asp-route-prodid="@entry.MaterialCoding" asp-route-db="@entry.DB" class="btn btn-primary btn-sm">详情</a>
+                }
+                else
+                {
+                    <a asp-action="ChangeDetail" asp-route-inquiryid="@entry.inquiry_id" asp-route-prodid="@entry.MaterialCoding" asp-route-db="@entry.DB" class="btn btn-primary btn-sm">详情</a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+
+@await DisplayAsync(Model.Pager)

@@ -1,0 +1,24 @@
+﻿{
+    "message": "succ",
+    "valid": 1,
+    "data": {
+        "has_more": 0,
+        "counts": 1,
+        "quotechange": [
+            {
+                "product_descript": "高通描述",
+                "name": "3KEY-5V V1.0版PCBA新1",
+                "product_mfg_name": "gaotong",
+                "spq": 100.0,
+                "price": 1.0,
+                "product_mfg_pn": "gaotong 11",
+                "reason": "pcn",
+                "l_t": 1,
+                "inquiry_id": "AO2017050102",
+                "partner_id": "S00000073",
+                "product_id": "[H0202008111] 3KEY-5V V1.0版PCBA"
+            }
+        ]
+    },
+    "dbname": "zhc_0228"
+}

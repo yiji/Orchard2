@@ -1,0 +1,71 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model Orchard.Users.ViewModels.LoginViewModel
+@*@inject SignInManager<ApplicationUser> SignInManager*@
+
+@{
+    ViewBag.Title = "登录";
+}
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+<div class="login-bg-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <section>
+                    <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <h4 class="h4-login"><span class="logo"></span>供应商报价系统</h4>
+                        <div class="login-wrap">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="UserName" class="col-xs-4 col-md-3 control-label">用户名</label>
+                                <div class="col-xs-8 col-md-9">
+                                    <input asp-for="UserName" class="form-control" value="@ViewBag.PartnerCode" autofocus data-val-required="用户名不能为空！" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="col-xs-4 col-md-3 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                                <div class="col-xs-8 col-md-9">
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="col-xs-4 col-md-3 control-label">验证码</label>
+                                <div class="col-xs-8 col-md-9">
+                                    @*@Html.TextBox("VerificationCode", (object)ViewBag.VerificationCode, new { @class = "verificationCode", placeholder = "请输入验证码" })*@
+                                    @Html.TextBox("VerificationCode", "", new { @class = "verificationCode", placeholder = "请输入验证码" })
+                                    <span class="code">@ViewBag.VerificationCode</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-offset-3 col-md-offset-3 col-xs-8 col-md-9">
+                                    <div class="checkbox">
+                                        <label asp-for="RememberMe">
+                                            <input asp-for="RememberMe" />
+                                            记住登录
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login-btns">
+                                <button type="submit" class="btn btn-default">登录</button>
+                                <a asp-action="ForgotPassword" class="btn btn-default">忘记密码</a>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(document.body).addClass("login-bg");
+        $(".login-bg-wrap").height($(window).height());
+        $(window).resize(function () {
+            $(".login-bg-wrap").height($(window).height());
+        })
+    })
+</script>

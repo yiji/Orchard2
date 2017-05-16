@@ -1,0 +1,44 @@
+﻿@using Orchard.MPUnovo.Models;
+@model PartnerViewMode
+@{
+    Layout = "AdminLTE";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <label>供应商编码:</label>
+        <div style="font-size:14px; margin-bottom:10px;">@Html.DisplayTextFor(model => model.PartnerCode)</div>
+    </div>
+    <div class="col-xs-12 col-md-12">
+        <label>公司名称:</label>
+        <div style="font-size:14px; margin-bottom:10px;">
+            @Html.DisplayTextFor(model => model.CompanyName)
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-12">
+        <label>公司地址:</label>
+        <div style="font-size:14px; margin-bottom:10px;">
+            @Html.DisplayTextFor(model => model.Address)
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label>联系人</label>
+        <table class="table table-bordered">
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+            </tr>
+            @foreach (var entry in Model.Contacts)
+            {
+                <tr>
+                    <td>@entry.Name</td>
+                    <td>@entry.Phone</td>
+                    <td>@entry.Email</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

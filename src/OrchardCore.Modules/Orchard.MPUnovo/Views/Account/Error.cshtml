@@ -1,0 +1,46 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model Orchard.Users.ViewModels.LoginViewModel
+@*@inject SignInManager<ApplicationUser> SignInManager*@
+
+@{
+    ViewBag.Title = "登录";
+}
+<div class="login-bg-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <section>
+                    <h4 class="h4-login"><span class="logo"></span>供应商报价系统</h4>
+                    <div class="login-wrap">
+                        <div asp-validation-summary="All" class="text-danger" style="color:#fff;">
+                            @{
+                                if (ViewBag.Message == null)
+                                {
+                                    @:发生错误，请重试一遍
+
+                                }
+                                else
+                                {
+                                    @ViewBag.Message
+
+                                }
+                            }
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(document.body).addClass("login-bg");
+        $(".login-bg-wrap").height($(window).height());
+        $(window).resize(function () {
+            $(".login-bg-wrap").height($(window).height());
+        })
+    })
+</script>

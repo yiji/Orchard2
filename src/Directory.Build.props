@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="TestTarget1" AfterTargets="Build">
+    <Message Text="测试 Directory.Build.props 层次1" Importance="high" />
+  </Target>
+</Project>

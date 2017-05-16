@@ -9,7 +9,8 @@
     <Copy
       SourceFiles="@(PackageAssetFiles)"
       DestinationFolder="$(MSBuildProjectDirectory)\Packages\%(RecursiveDir)"
-      ContinueOnError="true" />
+      ContinueOnError="true"
+      SkipUnchangedFiles="true" />
 
     <MSBuild
       Targets="CopyPackageAssetFiles"

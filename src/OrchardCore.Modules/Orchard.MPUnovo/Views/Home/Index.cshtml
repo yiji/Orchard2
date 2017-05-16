@@ -1,0 +1,30 @@
+﻿@using Orchard.MPUnovo.Models;
+@model QuoteInfoViewModel
+@{ 
+    Layout = "AdminLTE";
+    ViewBag.Title = "待报价列表";
+}
+
+
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>物料名称</th>
+            <th>物料编码</th>
+            <th>编辑</th>
+            <th>替换物料</th>
+        </tr>
+        @foreach (var entry in Model.Quotes)
+        {
+            <tr>
+                <td>@entry.MaterialName</td>
+                <td>@entry.MaterialCoding</td>
+                <td><a asp-action="Edit" asp-route-inquiryid="@entry.inquiry_id" asp-route-prodid="@entry.MaterialCoding" asp-route-db="@entry.DB" class="btn btn-primary btn-sm">报价</a></td>
+                <td><a asp-action="Change" asp-route-inquiryid="@entry.inquiry_id" asp-route-prodid="@entry.MaterialCoding" asp-route-db="@entry.DB" class="btn btn-primary btn-sm">替换物料</a></td>
+            </tr>
+        }
+    </table>
+}
+
+@await DisplayAsync(Model.Pager)
