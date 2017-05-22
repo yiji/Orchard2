@@ -27,7 +27,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
     <PackageReference Include="Senparc.Weixin" Version="4.12.3" />
     <PackageReference Include="Senparc.Weixin.QY" Version="4.3.0" />
-    <PackageReference Include="YesSql.Core" Version="2.0.0-beta-1014" />
+    <PackageReference Include="YesSql.Core" Version="2.0.0-beta-1026" />
   </ItemGroup>
 
   <ItemGroup>

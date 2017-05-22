@@ -658,7 +658,7 @@ namespace Orchard.MPUnovo.Controllers
                 byte[] bytes = Convert.FromBase64String(partnerCode);
                 string trueCode = Encoding.UTF8.GetString(bytes);
                 //判断供应商是否存在
-                var count = await _session.QueryAsync<PartnerInfo, PartnerInfoIndex>(item => item.PartnerCode == trueCode).Count();
+                var count = await _session.Query<PartnerInfo, PartnerInfoIndex>(item => item.PartnerCode == trueCode).CountAsync();
                 if (count > 0)
                 {
                     return RedirectToAction("Login", new { partnerCode = partnerCode });
