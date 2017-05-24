@@ -188,3 +188,4 @@ nuget.exe
 node_modules/*
 
 wwwroot
+.svn/
